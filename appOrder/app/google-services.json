@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "144510000668",
+    "project_id": "apporder-bf300",
+    "storage_bucket": "apporder-bf300.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144510000668:android:51ff9b1e8aaeb6e97549d9",
+        "android_client_info": {
+          "package_name": "com.example.apporder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqjnlZmQVaVwqTOJ5yi7yxmEcKzFztpwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

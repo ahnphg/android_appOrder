@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rs8bdkl1f7lf"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:layout_marginStart="24dp"
+    android:layout_marginBottom="16dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imgFood"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:id="@+id/rfrc3td0bifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cr24bffffff"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtName"
+            android:textColor="#31343D"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="12dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Burger Bistro" />
+
+        <TextView
+            android:id="@+id/txtID"
+            android:textColor="#646982"
+            android:textSize="13sp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="12dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="#ID1" />
+
+        <LinearLayout
+            android:id="@+id/r960nc80wlnk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginHorizontal="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtGia"
+                android:textColor="#31343D"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="20dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="$40" />
+
+            <ImageView
+                android:id="@+id/icAddCart"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_add"
+                app:shapeAppearanceOverlay="@style/cr20"
+                android:background="#000000"
+                android:scaleType="centerInside"
+                android:padding="5dp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

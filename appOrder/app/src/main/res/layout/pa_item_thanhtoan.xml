@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_background"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:layout_margin="8dp">
+
+    <!-- Hình ảnh bên trái -->
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/gray_background"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="8dp"/>
+
+    <!-- Phần nội dung bên phải -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
+
+        <!-- Dòng 1: Tên bàn, Mã đơn -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tableTextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Bàn 1"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/orderIdTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#162432"
+                android:textSize="14sp"
+                android:textColor="#666666"/>
+        </LinearLayout>
+
+        <!-- Dòng 2: Số tiền, Số lượng món -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/amountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$35.25"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/itemsTextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="03 Items"
+                android:textSize="14sp"
+                android:textColor="#666666"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ro997wm2ofjn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="24dp"
+            android:orientation="horizontal">
+
+            <!-- Nút Thanh toán -->
+            <LinearLayout
+                android:id="@+id/rvbghzf2z8y8"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/cr8bff7621"
+                android:paddingVertical="12dp"
+                android:layout_marginEnd="50dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/rgebsjj58f77"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thanh toán"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@android:color/transparent"
+                    android:layout_marginHorizontal="20dp"/>
+            </LinearLayout>
+
+            <!-- Nút Xóa -->
+            <LinearLayout
+                android:id="@+id/r2t1ngl734vs"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:background="@drawable/sff7621sw1cr8"
+                android:paddingVertical="12dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/rpuqnt4rez6e"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xóa"
+                    android:textColor="#FF7621"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@android:color/transparent"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+</LinearLayout>
+</LinearLayout>
