@@ -2,15 +2,15 @@ package com.example.apporder.modules;
 
 import java.io.Serializable;
 
-public class Food implements Serializable {
+public class paFood implements Serializable {
     private String id;
     private String name;
     private double price;
     private String imageUrl;
 
-    public Food() {}
+    public paFood() {}
 
-    public Food(String id, String name, double price, String imageUrl) {
+    public paFood(String id, String name, double price, String imageUrl) {
         this.id = id;
         this.name = name;
         this.price = price;

@@ -18,15 +18,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.content.Context;
 import android.util.Base64;
-import java.io.InputStream;
+
 import java.io.ByteArrayOutputStream;
-import com.bumptech.glide.Glide;
+import java.io.InputStream;
 import com.example.apporder.R;
-import com.example.apporder.database.FirestoreHelper;
-import com.example.apporder.modules.Food;
+import com.example.apporder.database.paFirestoreHelper;
+import com.example.apporder.modules.paFood;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -35,13 +34,12 @@ import okhttp3.Response;
 import org.json.JSONObject;
 import java.io.IOException;
 
-public class SuaXoaMonAnActivity extends AppCompatActivity {
+public class paThemMonAnActivity extends AppCompatActivity {
 
     private EditText etMaMonAn, etTenMonAn, etGia;
     private ImageView imageViewSelectPhotoMonAn;
-    private Button btnUpdate, btnXoa, btnHuy;
-    private FirestoreHelper firestoreHelper;
-    private Food food;
+    private Button btnLuu, btnHuy;
+    private paFirestoreHelper firestoreHelper;
     private Uri imageUri;
     private OkHttpClient client;
 
@@ -58,34 +56,19 @@ public class SuaXoaMonAnActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pa_act_suaxoa_mon_an);
+        setContentView(R.layout.pa_act_them_mon_an);
 
         // Ánh xạ các view
         etMaMonAn = findViewById(R.id.etMaMonAn);
         etTenMonAn = findViewById(R.id.etTenMonAn);
         etGia = findViewById(R.id.etGia);
         imageViewSelectPhotoMonAn = findViewById(R.id.imageViewSelectPhotoMonAn);
-        btnUpdate = findViewById(R.id.btnUpdate);
-        btnXoa = findViewById(R.id.btnXoa);
+        btnLuu = findViewById(R.id.btnLuu);
         btnHuy = findViewById(R.id.btnHuy);
 
         // Khởi tạo FirestoreHelper và OkHttpClient
-        firestoreHelper = new FirestoreHelper();
+        firestoreHelper = new paFirestoreHelper();
         client = new OkHttpClient();
-
-        // Lấy dữ liệu món ăn từ Intent
-        food = (Food) getIntent().getSerializableExtra("food");
-        if (food != null) {
-            etMaMonAn.setText(food.getId());
-            etTenMonAn.setText(food.getName());
-            etGia.setText(String.valueOf(food.getPrice()));
-            // Load ảnh từ imageUrl bằng Glide
-            Glide.with(this)
-                    .load(food.getImageUrl())
-                    .placeholder(R.mipmap.ic_launcher)
-                    .error(R.mipmap.ic_launcher)
-                    .into(imageViewSelectPhotoMonAn);
-        }
 
         // Xử lý sự kiện nhấn vào ImageView để chọn ảnh
         imageViewSelectPhotoMonAn.setOnClickListener(v -> {
@@ -104,11 +87,8 @@ public class SuaXoaMonAnActivity extends AppCompatActivity {
             }
         });
 
-        // Xử lý sự kiện nhấn nút Cập nhật
-        btnUpdate.setOnClickListener(v -> updateFood());
-
-        // Xử lý sự kiện nhấn nút Xóa
-        btnXoa.setOnClickListener(v -> deleteFood());
+        // Xử lý sự kiện nhấn nút Lưu
+        btnLuu.setOnClickListener(v -> saveFood());
 
         // Xử lý sự kiện nhấn nút Hủy
         btnHuy.setOnClickListener(v -> finish());
@@ -159,7 +139,7 @@ public class SuaXoaMonAnActivity extends AppCompatActivity {
         client.newCall(request).enqueue(callback);
     }
 
-    private void updateFood() {
+    private void saveFood() {
         String id = etMaMonAn.getText().toString().trim();
         String name = etTenMonAn.getText().toString().trim();
         String priceStr = etGia.getText().toString().trim();
@@ -177,69 +157,53 @@ public class SuaXoaMonAnActivity extends AppCompatActivity {
             return;
         }
 
-        // Nếu không chọn ảnh mới, giữ nguyên imageUrl cũ
         if (imageUri == null) {
-            Food updatedFood = new Food(id, name, price, food.getImageUrl());
-            firestoreHelper.updateFood(updatedFood,
-                    () -> {
-                        Toast.makeText(this, "Cập nhật món ăn thành công", Toast.LENGTH_SHORT).show();
-                        finish();
-                    },
-                    error -> Toast.makeText(this, "Lỗi: " + error, Toast.LENGTH_LONG).show());
-        } else {
-            // Kiểm tra kết nối mạng
-            if (!isNetworkAvailable()) {
-                Toast.makeText(this, "Không có kết nối mạng! Vui lòng kiểm tra kết nối và thử lại.", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            // Chuyển ảnh thành base64
-            String base64Image = imageToBase64(imageUri);
-            if (base64Image == null) {
-                Toast.makeText(this, "Không thể chuyển ảnh thành base64, vui lòng thử lại.", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            // Upload ảnh lên Imgur
-            uploadImageToImgur(base64Image, new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    runOnUiThread(() -> Toast.makeText(SuaXoaMonAnActivity.this, "Lỗi khi upload ảnh lên Imgur: " + e.getMessage(), Toast.LENGTH_LONG).show());
-                }
-
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    if (response.isSuccessful()) {
-                        String responseBody = response.body().string();
-                        try {
-                            JSONObject json = new JSONObject(responseBody);
-                            String imageUrl = json.getJSONObject("data").getString("link");
-                            Food updatedFood = new Food(id, name, price, imageUrl);
-                            // Cập nhật vào Firestore
-                            firestoreHelper.updateFood(updatedFood,
-                                    () -> runOnUiThread(() -> {
-                                        Toast.makeText(SuaXoaMonAnActivity.this, "Cập nhật món ăn thành công", Toast.LENGTH_SHORT).show();
-                                        finish();
-                                    }),
-                                    error -> runOnUiThread(() -> Toast.makeText(SuaXoaMonAnActivity.this, "Lỗi khi lưu vào Firestore: " + error, Toast.LENGTH_LONG).show()));
-                        } catch (Exception e) {
-                            runOnUiThread(() -> Toast.makeText(SuaXoaMonAnActivity.this, "Lỗi khi phân tích phản hồi từ Imgur: " + e.getMessage(), Toast.LENGTH_LONG).show());
-                        }
-                    } else {
-                        runOnUiThread(() -> Toast.makeText(SuaXoaMonAnActivity.this, "Lỗi khi upload ảnh lên Imgur: " + response.message(), Toast.LENGTH_LONG).show());
-                    }
-                }
-            });
+            Toast.makeText(this, "Vui lòng chọn ảnh", Toast.LENGTH_SHORT).show();
+            return;
         }
-    }
 
-    private void deleteFood() {
-        // Xóa dữ liệu từ Firestore
-        firestoreHelper.deleteFood(food.getId(),
-                () -> {
-                    Toast.makeText(this, "Xóa món ăn thành công", Toast.LENGTH_SHORT).show();
-                    finish();
-                },
-                error -> Toast.makeText(this, "Lỗi: " + error, Toast.LENGTH_LONG).show());
+        // Kiểm tra kết nối mạng
+        if (!isNetworkAvailable()) {
+            Toast.makeText(this, "Không có kết nối mạng! Vui lòng kiểm tra kết nối và thử lại.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // Chuyển ảnh thành base64
+        String base64Image = imageToBase64(imageUri);
+        if (base64Image == null) {
+            Toast.makeText(this, "Không thể chuyển ảnh thành base64, vui lòng thử lại.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // Upload ảnh lên Imgur
+        uploadImageToImgur(base64Image, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                runOnUiThread(() -> Toast.makeText(paThemMonAnActivity.this, "Lỗi khi upload ảnh lên Imgur: " + e.getMessage(), Toast.LENGTH_LONG).show());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String responseBody = response.body().string();
+                    try {
+                        JSONObject json = new JSONObject(responseBody);
+                        String imageUrl = json.getJSONObject("data").getString("link");
+                        paFood food = new paFood(id, name, price, imageUrl);
+                        // Lưu vào Firestore
+                        firestoreHelper.addFood(food,
+                                () -> runOnUiThread(() -> {
+                                    Toast.makeText(paThemMonAnActivity.this, "Thêm món ăn thành công", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }),
+                                error -> runOnUiThread(() -> Toast.makeText(paThemMonAnActivity.this, "Lỗi khi lưu vào Firestore: " + error, Toast.LENGTH_LONG).show()));
+                    } catch (Exception e) {
+                        runOnUiThread(() -> Toast.makeText(paThemMonAnActivity.this, "Lỗi khi phân tích phản hồi từ Imgur: " + e.getMessage(), Toast.LENGTH_LONG).show());
+                    }
+                } else {
+                    runOnUiThread(() -> Toast.makeText(paThemMonAnActivity.this, "Lỗi khi upload ảnh lên Imgur: " + response.message(), Toast.LENGTH_LONG).show());
+                }
+            }
+        });
     }
 }

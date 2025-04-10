@@ -8,20 +8,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.apporder.R;
-import com.example.apporder.adapter.FoodAdapter;
-import com.example.apporder.database.FirestoreHelper;
-import com.example.apporder.modules.Food;
+import com.example.apporder.adapter.paFoodAdapter;
+import com.example.apporder.database.paFirestoreHelper;
+import com.example.apporder.modules.paFood;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuanLyMenuActivity extends AppCompatActivity {
+public class paQuanLyMenuActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewMenu;
     private ImageView imgThemMonAn;
-    private FoodAdapter adapter;
-    private List<Food> foodList;
-    private FirestoreHelper firestoreHelper;
+    private paFoodAdapter adapter;
+    private List<paFood> foodList;
+    private paFirestoreHelper firestoreHelper;
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -35,11 +35,11 @@ public class QuanLyMenuActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Khởi tạo FirestoreHelper
-        firestoreHelper = new FirestoreHelper();
+        firestoreHelper = new paFirestoreHelper();
 
         // Thiết lập RecyclerView
         foodList = new ArrayList<>();
-        adapter = new FoodAdapter(foodList, this::goToEditFoodActivity);
+        adapter = new paFoodAdapter(foodList, this::goToEditFoodActivity);
         recyclerViewMenu.setLayoutManager(new GridLayoutManager(this, 2)); // 2 cột
         recyclerViewMenu.setAdapter(adapter);
 
@@ -48,15 +48,15 @@ public class QuanLyMenuActivity extends AppCompatActivity {
 
         // Xử lý sự kiện nhấn nút Thêm Món Ăn
         imgThemMonAn.setOnClickListener(v -> {
-            Intent intent = new Intent(QuanLyMenuActivity.this, ThemMonAnActivity.class);
+            Intent intent = new Intent(paQuanLyMenuActivity.this, paThemMonAnActivity.class);
             startActivity(intent);
         });
     }
 
     private void loadFoods() {
-        firestoreHelper.getAllFoods(new FirestoreHelper.OnFoodsLoadedListener() {
+        firestoreHelper.getAllFoods(new paFirestoreHelper.OnFoodsLoadedListener() {
             @Override
-            public void onFoodsLoaded(List<Food> foods) {
+            public void onFoodsLoaded(List<paFood> foods) {
                 foodList.clear();
                 foodList.addAll(foods);
                 adapter.notifyDataSetChanged();
@@ -64,13 +64,13 @@ public class QuanLyMenuActivity extends AppCompatActivity {
 
             @Override
             public void onError(String error) {
-                Toast.makeText(QuanLyMenuActivity.this, "Lỗi: " + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(paQuanLyMenuActivity.this, "Lỗi: " + error, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void goToEditFoodActivity(Food food) {
-        Intent intent = new Intent(QuanLyMenuActivity.this, SuaXoaMonAnActivity.class);
+    private void goToEditFoodActivity(paFood food) {
+        Intent intent = new Intent(paQuanLyMenuActivity.this, paSuaXoaMonAnActivity.class);
         intent.putExtra("food", food);
         startActivity(intent);
     }

@@ -1,23 +1,23 @@
 package com.example.apporder.database;
 
-import com.example.apporder.modules.Food;
+import com.example.apporder.modules.paFood;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirestoreHelper {
+public class paFirestoreHelper {
 
     private final FirebaseFirestore db;
     private static final String COLLECTION_FOODS = "foods";
 
-    public FirestoreHelper() {
+    public paFirestoreHelper() {
         db = FirebaseFirestore.getInstance();
     }
 
     // Thêm món ăn
-    public void addFood(Food food, OnSuccessListener onSuccess, OnFailureListener onFailure) {
+    public void addFood(paFood food, OnSuccessListener onSuccess, OnFailureListener onFailure) {
         db.collection(COLLECTION_FOODS)
                 .document(food.getId())
                 .set(food)
@@ -26,7 +26,7 @@ public class FirestoreHelper {
     }
 
     // Sửa món ăn
-    public void updateFood(Food food, OnSuccessListener onSuccess, OnFailureListener onFailure) {
+    public void updateFood(paFood food, OnSuccessListener onSuccess, OnFailureListener onFailure) {
         db.collection(COLLECTION_FOODS)
                 .document(food.getId())
                 .set(food)
@@ -49,9 +49,9 @@ public class FirestoreHelper {
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        List<Food> foodList = new ArrayList<>();
+                        List<paFood> foodList = new ArrayList<>();
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            Food food = document.toObject(Food.class);
+                            paFood food = document.toObject(paFood.class);
                             foodList.add(food);
                         }
                         listener.onFoodsLoaded(foodList);
@@ -71,7 +71,7 @@ public class FirestoreHelper {
     }
 
     public interface OnFoodsLoadedListener {
-        void onFoodsLoaded(List<Food> foodList);
+        void onFoodsLoaded(List<paFood> foodList);
         void onError(String error);
     }
 }

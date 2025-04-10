@@ -9,15 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.apporder.R;
-import com.example.apporder.modules.Food;
+import com.example.apporder.modules.paFood;
 import java.util.List;
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
+public class paFoodAdapter extends RecyclerView.Adapter<paFoodAdapter.FoodViewHolder> {
 
-    private List<Food> foodList;
+    private List<paFood> foodList;
     private OnItemClickListener listener;
 
-    public FoodAdapter(List<Food> foodList, OnItemClickListener listener) {
+    public paFoodAdapter(List<paFood> foodList, OnItemClickListener listener) {
         this.foodList = foodList;
         this.listener = listener;
     }
@@ -32,7 +32,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
-        Food food = foodList.get(position);
+        paFood food = foodList.get(position);
         holder.nameTextView.setText(food.getName());
         holder.idTextView.setText("#" + food.getId());
         holder.priceTextView.setText(String.format("$%.2f", food.getPrice()));
@@ -67,6 +67,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Food food);
+        void onItemClick(paFood food);
     }
 }

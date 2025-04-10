@@ -46,7 +46,7 @@
             <EditText
                 android:inputType="text"
                 android:hint="Tiêu đề"
-                android:id="@+id/rqiogzepz8l"
+                android:id="@+id/etTieuDe"
                 android:textColor="#000000"
                 android:textSize="14sp"
                 android:layout_marginBottom="28dp"
@@ -58,69 +58,60 @@
                 android:paddingLeft="22dp"
                 android:paddingRight="44dp"
                 />
-            <LinearLayout
-                android:id="@+id/rl1w4ogsgdf"
+            <EditText
+                android:inputType="text"
+                android:hint="Thông tin"
+                android:id="@+id/etThongtin"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:layout_marginBottom="28dp"
+                android:layout_marginHorizontal="36dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/cr10bc4c4c433"
-                android:paddingTop="17dp"
-                android:paddingBottom="84dp"
-                android:layout_marginBottom="32dp"
-                android:layout_marginHorizontal="36dp"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/r0ibc2paa9ris"
-                    android:textColor="#000000"
-                    android:textSize="14sp"
-                    android:layout_marginStart="22dp"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="Thông tin"
-                    />
-            </LinearLayout>
+                android:paddingVertical="40dp"
+                android:paddingLeft="22dp"
+                android:paddingRight="44dp"
+                />
             <LinearLayout
-                android:id="@+id/rrvspjil4wxa"
+                android:id="@+id/r9e0c0mko6i5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:background="@drawable/sffff7721sw1cr16bff7621"
                 android:paddingVertical="14dp"
                 android:layout_marginBottom="19dp"
-                android:layout_marginHorizontal="36dp"
-                android:clickable="true"
-                android:focusable="true"
+                android:layout_marginHorizontal="35dp"
                 android:orientation="vertical">
-                <TextView
-                    android:id="@+id/rzaea82t03g"
+                <Button
+                    android:id="@+id/btnLuu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lưu"
                     android:textColor="#FFFFFF"
                     android:textSize="17sp"
                     android:textStyle="bold"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="Lưu"
-                    />
+                    android:background="@android:color/transparent"/>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/r62kuis5u2r7"
+                android:id="@+id/r8b5vkoliy2r"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:background="@drawable/sff7621sw1cr16"
                 android:paddingVertical="14dp"
-                android:layout_marginBottom="266dp"
-                android:layout_marginHorizontal="36dp"
-                android:clickable="true"
-                android:focusable="true"
+                android:layout_marginBottom="142dp"
+                android:layout_marginHorizontal="35dp"
                 android:orientation="vertical">
-                <TextView
-                    android:id="@+id/rk9fzat5848i"
+                <Button
+                    android:id="@+id/btnHuy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hủy"
                     android:textColor="#000000"
                     android:textSize="17sp"
                     android:textStyle="bold"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="Hủy"
-                    />
+                    android:background="@android:color/transparent"/>
             </LinearLayout>
 
         </LinearLayout>

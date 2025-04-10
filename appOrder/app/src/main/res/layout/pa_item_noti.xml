@@ -27,6 +27,7 @@
 
         <!-- Tiêu đề -->
         <TextView
+            android:id="@+id/txtTen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TÊN"
@@ -36,6 +37,7 @@
 
         <!-- Nội dung -->
         <TextView
+            android:id="@+id/txtTieuDe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tiêu đề "
@@ -43,6 +45,7 @@
             android:textColor="#000000"/>
         <!-- Nội dung -->
         <TextView
+            android:id="@+id/txtNoiDung"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NỘI DUNG"
@@ -51,6 +54,7 @@
 
         <!-- Thời gian -->
         <TextView
+            android:id="@+id/txtTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20 min ago"
