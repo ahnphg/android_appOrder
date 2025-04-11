@@ -1,4 +1,4 @@
-package com.example.apporder.activity;
+package com.example.apporder.Activity;
 
 import android.Manifest;
 import android.content.Intent;
@@ -15,9 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apporder.R;
-import com.example.apporder.adapter.NoticeAdapter;
-import com.example.apporder.database.NoticeHelper;
-import com.example.apporder.modules.Notice;
+import com.example.apporder.Adapter.NoticeAdapter;
+import com.example.apporder.DatabaseHelper.NoticeHelper;
+import com.example.apporder.Model.Notice;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;

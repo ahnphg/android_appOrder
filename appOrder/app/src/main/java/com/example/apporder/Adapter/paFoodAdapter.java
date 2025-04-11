@@ -1,4 +1,4 @@
-package com.example.apporder.adapter;
+package com.example.apporder.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.apporder.R;
-import com.example.apporder.modules.paFood;
+import com.example.apporder.Model.paFood;
 import java.util.List;
 
 public class paFoodAdapter extends RecyclerView.Adapter<paFoodAdapter.FoodViewHolder> {

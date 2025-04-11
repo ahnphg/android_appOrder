@@ -1,4 +1,4 @@
-package com.example.apporder.modules;
+package com.example.apporder.Model;
 
 public class Notice {
     private String id;

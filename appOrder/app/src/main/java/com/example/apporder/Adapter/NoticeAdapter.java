@@ -1,4 +1,4 @@
-package com.example.apporder.adapter;
+package com.example.apporder.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apporder.R;
-import com.example.apporder.modules.Notice;
+import com.example.apporder.Model.Notice;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

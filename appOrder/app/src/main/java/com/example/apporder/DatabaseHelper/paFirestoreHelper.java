@@ -1,6 +1,6 @@
-package com.example.apporder.database;
+package com.example.apporder.DatabaseHelper;
 
-import com.example.apporder.modules.paFood;
+import com.example.apporder.Model.paFood;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 

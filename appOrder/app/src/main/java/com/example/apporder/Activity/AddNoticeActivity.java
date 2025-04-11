@@ -1,10 +1,9 @@
-package com.example.apporder.activity;
+package com.example.apporder.Activity;
 
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,7 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.apporder.R;
-import com.example.apporder.database.NoticeHelper;
+import com.example.apporder.DatabaseHelper.NoticeHelper;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.firestore.FirebaseFirestore;
 

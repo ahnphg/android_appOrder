@@ -1,4 +1,4 @@
-package com.example.apporder.database;
+package com.example.apporder.Activity;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;

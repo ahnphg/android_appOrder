@@ -1,4 +1,4 @@
-package com.example.apporder.activity;
+package com.example.apporder.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.apporder.R;
-import com.example.apporder.adapter.paFoodAdapter;
-import com.example.apporder.database.paFirestoreHelper;
-import com.example.apporder.modules.paFood;
+import com.example.apporder.Adapter.paFoodAdapter;
+import com.example.apporder.DatabaseHelper.paFirestoreHelper;
+import com.example.apporder.Model.paFood;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;

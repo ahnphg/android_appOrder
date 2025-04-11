@@ -1,0 +1,110 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/r09cwl30lhw8h"
+        android:layout_weight="1"
+        android:background="@drawable/cr20bffffff"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/lltongtien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginHorizontal="24dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/r5mgogsypwwu"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_back"
+                android:scaleType="fitXY"
+                />
+            <TextView
+                android:id="@+id/tv_table_nam"
+                android:textColor="#181C2E"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Bàn 1"
+                />
+        </LinearLayout>
+
+        <!-- Danh sách món đã gọi -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerOrdered"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:id="@+id/llTong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            app:layout_constraintBottom_toBottomOf="@id/recyclerOrdered"
+            app:layout_constraintStart_toEndOf="@id/recyclerOrdered"
+            android:layout_marginLeft="20dp"
+            >
+
+            <TextView
+                android:id="@+id/txtTong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng tiền:"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp"/>
+
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="250000"
+                android:textSize="20sp"
+                android:textColor="#666666"
+                android:layout_marginLeft="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llThanhtoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:background="@drawable/sffff7721sw1cr16bff7621"
+            android:paddingVertical="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="35dp"
+            app:layout_constraintBottom_toBottomOf="@id/llTong"
+            app:layout_constraintStart_toEndOf="@id/llTong"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btnThanhToan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Thanh toán"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -29,7 +30,17 @@
 
         <!-- Activity hiện có -->
         <activity
-            android:name=".activity.NoticeActivity"
+            android:name=".Activity.NoticeActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Activity.paThemMonAnActivity"
+            android:exported="false" />
+
+
+        <!-- Thêm các Activity mới -->
+        <activity
+            android:name=".Activity.phMyOrderActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,21 +48,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.paThemMonAnActivity"
+            android:name=".Activity.PaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.paSuaXoaMonAnActivity"
+            android:name=".Activity.AddNoticeActivity"
             android:exported="false" />
-
-        <!-- Thêm các Activity cho chức năng thông báo -->
-
+        <!-- Thêm ViewDetailActivity -->
         <activity
-            android:name=".activity.AddNoticeActivity"
+            android:name=".Activity.ViewDetailActivity"
             android:exported="false" />
 
         <!-- Đăng ký Firebase Messaging Service -->
         <service
-            android:name=".database.MyFirebaseMessagingService"
+            android:name=".Activity.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
